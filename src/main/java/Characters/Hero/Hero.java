@@ -1,10 +1,14 @@
 package Characters.Hero;
 
+import Behaviours.IAttack;
+import Characters.Creatures.Enemy;
 import Characters.MagicItems.Item;
 import classes.Player;
 import classes.attackOption.Weapons.Weapon;
+import classes.roomTypes.Forest;
+import classes.roomTypes.RoomType;
 
-public class Hero extends Player {
+public class Hero extends Player implements IAttack {
     private Weapon weapon;
     private Item item;
 
@@ -28,5 +32,13 @@ public class Hero extends Player {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public void attack(Player player){
+        if (player instanceof Enemy){
+            int currentEnemyHealth = player.getHealth();
+            int newEnemyHealth = currentEnemyHealth - this.getWeapon().getDamage();
+            player.setHealth(newEnemyHealth);
+        }
     }
 }

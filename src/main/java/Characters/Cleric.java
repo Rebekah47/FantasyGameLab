@@ -1,9 +1,10 @@
 package Characters;
 
+import Behaviours.IHeal;
 import classes.Player;
 import classes.attackOption.healingTools.HealingTool;
 
-public class Cleric extends Player {
+public class Cleric extends Player implements IHeal {
     private HealingTool healingTool;
 
     public Cleric(String name, int health, HealingTool healingTool) {
@@ -17,5 +18,11 @@ public class Cleric extends Player {
 
     public void setHealingTool(HealingTool healingTool) {
         this.healingTool = healingTool;
+    }
+
+    public void heal(Player player){
+        int currentPlayerHealth = player.getHealth();
+        int newPlayerHealth = healingTool.getHealing() + currentPlayerHealth;
+        player.setHealth(newPlayerHealth);
     }
 }

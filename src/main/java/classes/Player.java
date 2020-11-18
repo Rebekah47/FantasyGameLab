@@ -38,4 +38,13 @@ public class Player {
     public void setTreasures(ArrayList<Treasure> treasures) {
         this.treasures = treasures;
     }
+
+    public boolean checkifDead(){
+        if (getHealth() <= 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

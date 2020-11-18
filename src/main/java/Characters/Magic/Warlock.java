@@ -1,10 +1,12 @@
 package Characters.Magic;
 
+import Behaviours.IAttack;
+import Characters.Creatures.Enemy;
 import Characters.Creatures.Ogre;
 import classes.Player;
 import classes.attackOption.spells.Spell;
 
-public class Warlock extends Player {
+public class Warlock extends Player implements IAttack {
     private Ogre ogre;
     private Spell spell;
 
@@ -29,4 +31,13 @@ public class Warlock extends Player {
     public void setSpell(Spell spell) {
         this.spell = spell;
     }
+
+    public void attack(Player player){
+        if (player instanceof Enemy){
+            int currentEnemyHealth = player.getHealth();
+            int newEnemyHealth = currentEnemyHealth - this.getSpell().getDamage();
+            player.setHealth(newEnemyHealth);
+        }
+    }
+
 }

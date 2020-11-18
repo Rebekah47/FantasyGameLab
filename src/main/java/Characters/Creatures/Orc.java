@@ -6,10 +6,11 @@ import classes.Player;
 public class Orc extends Enemy{
     private Knight knight;
 
-    public Orc(int damage, Knight knight) {
-        super(damage);
-        this.knight = knight;
+    public Orc(String name, int health, int damage) {
+        super(name, health, damage);
+        this.knight = null;
     }
+
 
     public Knight getKnight() {
         return knight;
